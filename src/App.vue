@@ -1,17 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld />
+  <button @click="()=>{increment()}">Increment</button>
+  <button @click="()=>{decrement()}">Decrement</button>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+import { useCounterStore } from "./store/store.ts";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const { increment, decrement } = useCounterStore();
+
 </script>
 
 <style>
