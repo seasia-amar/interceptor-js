@@ -4,8 +4,8 @@ import { createPinia } from "pinia";
 
 
 
-const app =createApp(App)
 
+const app =createApp(App)
 app.use(createPinia());
 
 app.mount('#app');

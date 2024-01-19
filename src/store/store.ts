@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
+import api from './api.ts'
+
 
 
 export const useCounterStore = defineStore({
@@ -28,10 +30,9 @@ export const addUsers = defineStore({
   }),
   actions: {
     async handleCreateUser(data) {
-      console.log(data, "daskdas")
       try {
         // Use the `await` keyword inside an async function
-        const response = await axios.post('https://62e10ae3fa99731d75cc32ce.mockapi.io/books/store',data);
+        const response = await api.post('register',data);
         return { message: 'User Created', response };
       } catch (error) {
         throw error;

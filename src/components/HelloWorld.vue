@@ -14,6 +14,7 @@ const name = ref("sanjeev");
 const email = ref("sanjeev@yopmail.com");
 const password = ref("sanjeev");
 const passwordVerify = ref("sanjeev");
+const phone =ref("7056827391")
 const alert = ref("");
 // const createUser=handleCreateUser()
 
@@ -22,7 +23,8 @@ const handleSubmit = async() => {
     name: name.value,
     email: email.value,
     password: password.value,
-    passwordVerify: passwordVerify.value,
+    confirmPassword: passwordVerify.value,
+    phone :phone.value
   };
   console.log(data)
  await handleCreateUser(data);
@@ -38,7 +40,7 @@ const handleSubmit = async() => {
 
       <div class="form-style">
         <label> Email address </label>
-        <input type="email" v-model="email" />
+        <input  type="email" v-model="email" />
         <label>
           Name
           <input type="text" v-model="name" />
@@ -50,6 +52,10 @@ const handleSubmit = async() => {
         <label>
           Verify password
           <input type="password" v-model="passwordVerify" />
+        </label>
+          <label>
+          Phone
+          <input type="number" v-model="phone" />
         </label>
         <button type="submit" @click="handleSubmit">Sign up</button>
       </div>
