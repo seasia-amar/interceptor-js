@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
-import login from '../components/login.vue'
+import login from '../components/UserLogin.vue'
 
 // 1. Define route components.
 // These can be imported from other files
@@ -10,10 +10,22 @@ import login from '../components/login.vue'
 // Each route should map to a component.
 // We'll talk about nested routes later.
 
-export  const router = createRouter({
-    history: createWebHistory(),
+const router = createRouter({
+    history: createWebHistory('/crud'),
     routes: [
-        { path: '/register', component: HelloWorld },
-        { path: '/login', component: login },
+      {
+        path: "/register",
+        name: "register",
+        component: HelloWorld,
+    
+      },   
+      {
+        path: "/",
+        name: "login",
+        component: login,
+      },   
+    
+    
     ]
 })
+export default router

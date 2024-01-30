@@ -1,23 +1,16 @@
 <script setup>
-import { useCounterStore, addUsers } from "../store/store.ts";
-import { storeToRefs } from "pinia";
-import { computed } from "vue";
-import { ref } from "vue";
+import { addUsers } from "../store/store.ts";
+  import { ref } from "vue";
 
-const { count } = storeToRefs(useCounterStore());
 const { handleCreateUser } = addUsers();
-const test = computed(() => {
-  return count;
-});
+
 
 const name = ref("sanjeev");
 const email = ref("sanjeev@yopmail.com");
 const password = ref("sanjeev");
 const passwordVerify = ref("sanjeev");
-const phone =ref("7056827391")
+const phone =ref("7056827391");
 const alert = ref("");
-// const createUser=handleCreateUser()
-
 const handleSubmit = async() => {
   const data = {
     name: name.value,
@@ -26,61 +19,31 @@ const handleSubmit = async() => {
     confirmPassword: passwordVerify.value,
     phone :phone.value
   };
-  console.log(data)
  await handleCreateUser(data);
 };
 </script>
 <template>
-  <div class="hello">
-    HelloWorld
-    {{ test }}
+<div class="p-6 text-left ">
+  <div id="alert" v-if="alert" class="p-2 mb-4 text-white bg-red-500">{{ alert }}</div>
 
-    <div id="app">
-      <div id="alert" v-if="alert">{{ alert }}</div>
+  <div class="p-8 text-left text-white bg-blue-500 rounded shadow-md ">
+    <label class="mb-2 font-semibold text-black-500">Email address</label>
+    <input type="email" v-model="email" class="w-full px-4 py-2 mb-4 text-blue-500 border border-blue-500 rounded" />
 
-      <div class="form-style">
-        <label> Email address </label>
-        <input  type="email" v-model="email" />
-        <label>
-          Name
-          <input type="text" v-model="name" />
-        </label>
-        <label>
-          Password
-          <input type="password" v-model="password" />
-        </label>
-        <label>
-          Verify password
-          <input type="password" v-model="passwordVerify" />
-        </label>
-          <label>
-          Phone
-          <input type="number" v-model="phone" />
-        </label>
-        <button type="submit" @click="handleSubmit">Sign up</button>
-      </div>
-      <!-- </form> -->
-    </div>
+    <label class="mb-2 font-semibold text-black-500">Name</label>
+    <input type="text" v-model="name" class="w-full px-4 py-2 mb-4 text-blue-500 border border-blue-500 rounded" />
+
+    <label class="mb-2 font-semibold text-black-500">Password</label>
+    <input type="password" v-model="password" class="w-full px-4 py-2 mb-4 text-blue-500 border border-blue-500 rounded" />
+
+    <label class="mb-2 font-semibold text-black-500">Verify password</label>
+    <input type="password" v-model="passwordVerify" class="w-full px-4 py-2 mb-4 text-blue-500 border border-blue-500 rounded" />
+
+    <label class="mb-2 font-semibold text-black-500">Phone</label>
+    <input type="number" v-model="phone" class="w-full px-4 py-2 mb-4 text-blue-500 border border-blue-500 rounded" />
+
+    <button type="submit" @click="handleSubmit" class="w-full px-4 py-2 text-blue-500 bg-white rounded hover:bg-blue-600">Sign up</button>
   </div>
+</div>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.form-style {
-  display: block;
-}
-</style>

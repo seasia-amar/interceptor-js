@@ -40,3 +40,23 @@ export const addUsers = defineStore({
     },
   },
 });
+
+export const loginUser=defineStore({
+  id:"login user",
+  state: () => ({
+    message: "",
+    error: "",
+    loading: "",
+  }),
+  actions: {
+    async handleloginUser(data) {
+      try {
+        // Use the `await` keyword inside an async function
+        const response = await api.post('login',data);
+        return { message: 'User Created', response };
+      } catch (error) {
+        throw error;
+      }
+    },
+  },
+})
